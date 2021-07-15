@@ -70,7 +70,7 @@ public class BoardServiceImpl extends DAO implements BoardService {
 	@Override
 	public int boardWrite(BoardVO vo) {
 		int n = 0;
-		String sql = "insert into board values(?,?,?,?)";
+		String sql = "insert into board(boardid,writer,title,subject) values(?,?,?,?)";
 		try {
 			psmt = conn.prepareStatement(sql);
 			psmt.setString(1, vo.getBoardId());
@@ -87,7 +87,7 @@ public class BoardServiceImpl extends DAO implements BoardService {
 	@Override
 	public int boardDelete(BoardVO vo) {
 		int n=0;
-		String sql = "delete from member where id = ?";
+		String sql = "delete from board where boardid = ?";
 		try {
 			psmt = conn.prepareStatement(sql);
 			psmt.setString(1, vo.getBoardId());

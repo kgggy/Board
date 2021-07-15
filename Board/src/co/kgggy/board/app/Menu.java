@@ -58,6 +58,13 @@ public class Menu {
 
 	private void boardSelect() {
 		// TODO 게시글 하나 조회.
+		BoardVO vo = new BoardVO();
+		System.out.println("조회하실 글 번호를 입력하세요>");
+		vo.setBoardId(sc.next());
+		sc.nextLine();
+
+		vo = dao.boardSelect(vo);
+		System.out.println(vo.getSubject());
 
 	}
 
