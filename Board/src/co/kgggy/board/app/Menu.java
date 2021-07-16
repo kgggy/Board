@@ -13,9 +13,9 @@ public class Menu {
 	private BoardService dao = new BoardServiceImpl();
 
 	private void menuTitle() {
+		boardAll();
 		System.out.println("🌞☁🌨🌦🌩🌞☁🌨🌦");
 		System.out.println("<<오늘의 날씨 게시판>>");
-		boardAll();
 		System.out.println("-- 1. 게시글 조회 --");
 		System.out.println("-- 2. 게시글 작성 --");
 		System.out.println("-- 3. 게시글 삭제 --");
@@ -64,8 +64,10 @@ public class Menu {
 		sc.nextLine();
 
 		vo = dao.boardSelect(vo);
+		System.out.println();
+		System.out.println("<< 내용 >>");
 		System.out.println(vo.getSubject());
-
+		System.out.println();
 	}
 
 	private void boardWrite() {
@@ -78,10 +80,9 @@ public class Menu {
 		vo.setWriter(sc.next());
 		sc.nextLine();
 		System.out.println("제목>");
-		vo.setTitle(sc.next());
-		sc.nextLine();
+		vo.setTitle(sc.nextLine()); //nextLine으로 해줘야 스페이스바 인식.
 		System.out.println("내용>");
-		vo.setSubject(sc.next());
+		vo.setSubject(sc.nextLine());
 
 		int n = dao.boardWrite(vo);
 		if (n != 0) {
